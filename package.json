@@ -2,7 +2,8 @@
   "name": "learn-faust-seed",
   "dependencies": {
     "browserify": "~> 10.2.4",
-    "browserify-incremental": "^3.0.1"
+    "browserify-incremental": "^3.0.1",
+    "reactify": "^1.1.1"
   },
   "license": "MIT",
   "engines": {
