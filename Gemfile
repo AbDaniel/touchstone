@@ -38,3 +38,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 gem 'browserify-rails'
+gem 'react-rails'
