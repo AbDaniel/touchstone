@@ -1,3 +1,5 @@
+React = require('react')
+
 var DemoComponent = React.createClass({
     displayName: 'Demo Component',
     render: function () {
