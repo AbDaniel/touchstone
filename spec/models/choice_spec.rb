@@ -11,4 +11,14 @@ describe Choice do
       expect(choice).to be_valid
     end
   end
+  describe '#correct?' do
+    it 'is a right choice when correct if true' do
+      choice = FactoryGirl.build(:choice, correct: true)
+      expect(choice.correct?).to be true
+    end
+    it 'is not a right choice when correct if false' do
+      choice = FactoryGirl.build(:choice, correct: false)
+      expect(choice.correct?).to be false
+    end
+  end
 end

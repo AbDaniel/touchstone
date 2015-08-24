@@ -7,4 +7,7 @@ class Choice < ActiveRecord::Base
     @correct = correct
   end
 
+  def correct?
+    @correct
+  end
 end
