@@ -1,6 +1,4 @@
 //= require_self
+//= require react
 //= require react_ujs
-
-React = require('react')
-
-DemoComponent = require('./components/DemoComponent');
+//= require_tree ./components
