@@ -19,4 +19,6 @@ describe Choice do
       expect(choice.correct).to be false
     end
   end
+
+  it { should belong_to(:question) }
 end
