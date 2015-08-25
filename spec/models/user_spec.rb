@@ -10,4 +10,9 @@ describe User do
     expect(@user.email).to match 'user@example.com'
   end
 
+  it 'should be a valid user' do
+    user = FactoryGirl.build(:user)
+    expect(user).to be_valid
+  end
+
 end
