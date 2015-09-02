@@ -42,5 +42,6 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+gem 'hirb'
 gem 'browserify-rails'
 gem 'react-rails'
