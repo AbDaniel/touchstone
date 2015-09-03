@@ -1,8 +1,8 @@
 require 'choice'
 
 class Question < ActiveRecord::Base
-  has_many :choice
+  has_many :choices
 
-  validates_associated :choice
+  validates_associated :choices
   validates_presence_of :description
 end
