@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Question, type: :model do
 
-  let(:question) { FactoryGirl.create(:question_with_choices) }
+  let(:question) { FactoryGirl.create(:question) }
 
   subject { question }
 
@@ -11,14 +11,16 @@ describe Question, type: :model do
     expect(question).to_not be_valid
   end
 
-  context 'question with choices' do
+  it 'is not valid without a category' do
+    question = FactoryGirl.build(:question, categories: [])
+    expect(question).to_not be_valid
+  end
 
-    it { should have_many(:choices) }
 
-    it 'should have four choices' do
-      expect(question.choices.count).to eq(4)
-    end
+  it { should have_many(:choices) }
 
+  it 'should have four choices' do
+    expect(question.choices.count).to eq(4)
   end
 
 end
