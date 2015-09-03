@@ -18,7 +18,7 @@ describe Question, type: :model do
     it 'should have four choices' do
       expect(question.choices.count).to eq(4)
     end
-    
+
   end
 
 end

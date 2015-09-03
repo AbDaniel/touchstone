@@ -8,4 +8,9 @@ describe Category do
 
   it { should be_valid }
 
+  it 'is not valid without a name' do
+    category = FactoryGirl.build(:category, name: nil)
+    expect(category).to_not be_valid
+  end
+
 end
