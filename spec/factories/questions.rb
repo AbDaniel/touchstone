@@ -3,7 +3,9 @@ FactoryGirl.define do
   factory :question do
     description "MyString"
 
-    categories { [create(:category)] }
+    factory :question_with_categories do
+      categories { [create(:category)] }
+    end
 
     factory :question_with_choices do
       transient do
@@ -13,6 +15,6 @@ FactoryGirl.define do
         create_list(:choice, evaluator.choice_count, question: question)
       end
     end
-  end
 
+  end
 end
