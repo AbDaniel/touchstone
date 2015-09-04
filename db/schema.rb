@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150904053055) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150904053055) do
     t.integer "question_id"
   end
 
-  add_index "categories_questions", ["category_id"], name: "index_categories_questions_on_category_id"
-  add_index "categories_questions", ["question_id"], name: "index_categories_questions_on_question_id"
+  add_index "categories_questions", ["category_id"], name: "index_categories_questions_on_category_id", using: :btree
+  add_index "categories_questions", ["question_id"], name: "index_categories_questions_on_question_id", using: :btree
 
   create_table "choices", force: :cascade do |t|
     t.string   "text"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150904053055) do
     t.integer  "question_id"
   end
 
-  add_index "choices", ["question_id"], name: "index_choices_on_question_id"
+  add_index "choices", ["question_id"], name: "index_choices_on_question_id", using: :btree
 
   create_table "exam_configurations", force: :cascade do |t|
     t.integer  "exam_id"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150904053055) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "exam_configurations", ["exam_id"], name: "index_exam_configurations_on_exam_id"
+  add_index "exam_configurations", ["exam_id"], name: "index_exam_configurations_on_exam_id", using: :btree
 
   create_table "exams", force: :cascade do |t|
     t.string   "code"
@@ -75,7 +78,9 @@ ActiveRecord::Schema.define(version: 20150904053055) do
     t.integer  "role"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "choices", "questions"
+  add_foreign_key "exam_configurations", "exams"
 end
