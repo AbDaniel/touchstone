@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Exam do
+
   let(:exam) { FactoryGirl.create(:exam) }
 
   subject { exam }
@@ -16,5 +17,7 @@ describe Exam do
     exam = FactoryGirl.build(:exam, name: nil)
     expect(exam).to_not be_valid
   end
+
+  it 'has a exam configuration'
 
 end
