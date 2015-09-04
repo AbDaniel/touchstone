@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :exam do
-    code "MyString"
-name "MyString"
+    code "CS-101"
+    name "Introduction to CS"
   end
-
 end
