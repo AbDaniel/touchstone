@@ -45,3 +45,4 @@ end
 gem 'hirb'
 gem 'browserify-rails'
 gem 'react-rails'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'

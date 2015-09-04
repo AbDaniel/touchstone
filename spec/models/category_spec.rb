@@ -12,5 +12,5 @@ describe Category do
     category = FactoryGirl.build(:category, name: nil)
     expect(category).to_not be_valid
   end
-  
+
 end
