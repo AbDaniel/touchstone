@@ -10,6 +10,7 @@
 #
 
 class Exam < ActiveRecord::Base
+  has_one :exam_configuration
 
   validates_presence_of :code
   validates_presence_of :name

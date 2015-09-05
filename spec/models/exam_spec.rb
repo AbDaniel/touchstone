@@ -19,6 +19,8 @@ describe Exam do
 
   it { should be_valid }
 
+  it { should have_one(:exam_configuration) }
+
   it 'is not valid without exam code' do
     exam = FactoryGirl.build(:exam, code: nil)
     expect(exam).to_not be_valid
@@ -28,7 +30,5 @@ describe Exam do
     exam = FactoryGirl.build(:exam, name: nil)
     expect(exam).to_not be_valid
   end
-
-  it 'has a exam configuration'
 
 end
