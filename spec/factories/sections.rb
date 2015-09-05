@@ -2,11 +2,12 @@
 #
 # Table name: sections
 #
-#  id              :integer          not null, primary key
-#  category_id     :integer
-#  no_of_questions :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                    :integer          not null, primary key
+#  category_id           :integer
+#  no_of_questions       :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  exam_configuration_id :integer
 #
 
 FactoryGirl.define do
