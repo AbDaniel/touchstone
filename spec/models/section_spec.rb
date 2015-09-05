@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Section, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Section do
+
+  let(:section) { FactoryGirl.create(:section) }
+
+  subject { section }
+
+  it { should be_valid }
+
 end
