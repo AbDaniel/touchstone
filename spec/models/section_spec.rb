@@ -18,8 +18,9 @@ describe Section do
     expect(section).to_not be_valid
   end
 
-  it 'has more positive no of questions'
-
-  it 'does not have negative no of questions '
+  it 'is invalid when no of questions is less than one' do
+    section = FactoryGirl.build(:section, no_of_questions: -1)
+    expect(section).to_not be_valid
+  end
 
 end
