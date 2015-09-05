@@ -17,18 +17,21 @@ describe Exam do
 
   subject { exam }
 
-  it { should be_valid }
+  describe '#valid?' do
+    it { should be_valid }
 
-  it { should have_one(:exam_configuration) }
+    it { should have_one(:exam_configuration) }
 
-  it 'is not valid without exam code' do
-    exam = FactoryGirl.build(:exam, code: nil)
-    expect(exam).to_not be_valid
+    it 'is not valid without exam code' do
+      exam = FactoryGirl.build(:exam, code: nil)
+      expect(exam).to_not be_valid
+    end
+
+    it 'is not valid without exam name' do
+      exam = FactoryGirl.build(:exam, name: nil)
+      expect(exam).to_not be_valid
+    end
   end
 
-  it 'is not valid without exam name' do
-    exam = FactoryGirl.build(:exam, name: nil)
-    expect(exam).to_not be_valid
-  end
 
 end
