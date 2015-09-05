@@ -11,6 +11,7 @@
 
 class Section < ActiveRecord::Base
   belongs_to :category
+  belongs_to :exam_configuration
 
   validates_presence_of :category
   validates :no_of_questions, presence: true,

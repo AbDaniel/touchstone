@@ -11,6 +11,7 @@
 
 require 'rails_helper'
 
+
 describe Section do
 
   let(:section) { FactoryGirl.create(:section) }
@@ -34,6 +35,8 @@ describe Section do
       section = FactoryGirl.build(:section, no_of_questions: -1)
       expect(section).to_not be_valid
     end
+
+    it { should belong_to :exam_configuration }
   end
 
 end
