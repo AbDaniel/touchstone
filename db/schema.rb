@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905020831) do
+ActiveRecord::Schema.define(version: 20150905053210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20150905020831) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "no_of_questions"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "sections", ["category_id"], name: "index_sections_on_category_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -84,4 +93,5 @@ ActiveRecord::Schema.define(version: 20150905020831) do
 
   add_foreign_key "choices", "questions"
   add_foreign_key "exam_configurations", "exams"
+  add_foreign_key "sections", "categories"
 end
