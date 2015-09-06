@@ -12,6 +12,7 @@
 FactoryGirl.define do
   factory :exam_configuration do
     exam { create(:exam) }
+    duration '1 hour'
   end
 
 end

@@ -17,5 +17,9 @@ FactoryGirl.define do
     name 'Introduction to CS'
     description 'Test your CS Skills'
     detail 'A Long descriptive detail which I dont have time write'
+
+    after(:create) do |exam|
+      create(:exam_configuration, exam: exam)
+    end
   end
 end
