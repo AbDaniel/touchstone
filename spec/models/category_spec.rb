@@ -12,7 +12,7 @@ require 'rails_helper'
 
 describe Category do
 
-  let(:category) { FactoryGirl.create(:category) }
+  let(:category) { FactoryGirl.build_stubbed(:category) }
 
   subject { category }
 

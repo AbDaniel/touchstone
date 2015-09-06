@@ -15,7 +15,7 @@ require 'rails_helper'
 
 describe Section do
 
-  let(:section) { FactoryGirl.create(:section) }
+  let(:section) { FactoryGirl.build_stubbed(:section) }
 
   subject { section }
 

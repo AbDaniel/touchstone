@@ -13,7 +13,7 @@ require 'rails_helper'
 
 describe Exam do
 
-  let(:exam) { FactoryGirl.create(:exam) }
+  let(:exam) { FactoryGirl.build_stubbed(:exam) }
 
   subject { exam }
 
