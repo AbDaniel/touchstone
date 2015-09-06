@@ -16,10 +16,10 @@ feature 'User starts a exam', :devise do
   scenario 'sees list of exams' do
     login_as(@user, scope: :user)
     visit exams_path
-    expect(page).to have_content 'CS-101'
-    expect(page).to have_content 'Introduction to Programming'
-    expect(page).to have_content 'CS-102'
-    expect(page).to have_content 'Introduction to Ruby'
+    expect(page).to have_content 'CS-101:Introduction to Programming'
+    expect(page).to have_content 'Test you Programming Skills'
+    expect(page).to have_content 'CS-102:Introduction to Ruby'
+    expect(page).to have_content 'Test you Ruby Skills'
   end
 
   # scenario 'navigates to exam description page' do

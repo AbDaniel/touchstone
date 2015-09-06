@@ -6,13 +6,10 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title black-text">
-              <span><%= exam.code %></span>:<span><%= exam.name %></span>
+              <span><%= link_to exam.code + ':' + exam.name, exam %></span>
             </span>
 
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-          <div class="card-action">
-            <%= link_to 'Take Test', exam %>
+            <p><%= exam.description %></p>
           </div>
         </div>
       </div>

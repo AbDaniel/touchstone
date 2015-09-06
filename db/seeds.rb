@@ -52,7 +52,7 @@ end
   Choice.create(text: 'Choice 4', correct: true, question: question)
 end
 
-exam = Exam.create(code: 'CS-101', name: 'Introduction to Programming')
+exam = Exam.create(code: 'CS-101', name: 'Introduction to Programming', description: 'Test your Programming Skills')
 exam_configuration = ExamConfiguration.create(exam: exam, duration: '2 hours')
 sections = [[category_probability, 3], [category_time, 3], [category_number, 3], [category_permutation, 3]]
 
