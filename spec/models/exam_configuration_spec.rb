@@ -15,6 +15,8 @@ describe ExamConfiguration do
 
   it { should belong_to :exam }
 
+  it { should have_many :sections }
+
   describe '#valid?' do
     it 'should be invalid without a duration' do
       exam = FactoryGirl.build(:exam_configuration, duration: nil)
