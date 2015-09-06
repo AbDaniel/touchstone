@@ -1,0 +1,32 @@
+include Warden::Test::Helpers
+Warden.test_mode!
+
+feature 'User starts a exam', :devise do
+
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    FactoryGirl.create(:exam, code: 'CS-101', name: 'Introduction to Programming', description: 'Test you Programming Skills')
+    FactoryGirl.create(:exam, code: 'CS-102', name: 'Introduction to Ruby', description: 'Test you Ruby Skills')
+  end
+
+  after(:each) do
+    Warden.test_reset!
+  end
+
+  scenario 'sees list of exams' do
+    login_as(@user, scope: :user)
+    visit exams_path
+    expect(page).to have_content 'CS-101'
+    expect(page).to have_content 'Introduction to Programming'
+    expect(page).to have_content 'CS-102'
+    expect(page).to have_content 'Introduction to Ruby'
+  end
+
+  # scenario 'navigates to exam description page' do
+  #   login_as(user, scope: :user)
+  #   visit exams_path
+  #   expect(page).to have_content 'CS-101'
+  #   expect(page).to have_content 'Introduction to Programming'
+  # end
+
+end
