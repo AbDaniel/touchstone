@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  description :string
+#  detail      :string
 #
 
 class Exam < ActiveRecord::Base
@@ -16,4 +17,5 @@ class Exam < ActiveRecord::Base
   validates_presence_of :code
   validates_presence_of :name
   validates_presence_of :description
+  validates_presence_of :detail
 end

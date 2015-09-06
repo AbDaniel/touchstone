@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  description :string
+#  detail      :string
 #
 
 require 'rails_helper'
@@ -34,6 +35,7 @@ describe Exam do
     end
 
     it { should validate_presence_of :description }
+    it { should validate_presence_of :detail }
   end
 
 end
