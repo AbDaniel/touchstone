@@ -2,11 +2,12 @@
 #
 # Table name: exams
 #
-#  id         :integer          not null, primary key
-#  code       :string
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  code        :string
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :string
 #
 
 require 'rails_helper'
@@ -31,6 +32,8 @@ describe Exam do
       exam = FactoryGirl.build(:exam, name: nil)
       expect(exam).to_not be_valid
     end
+
+    it { should validate_presence_of :description }
   end
 
 end

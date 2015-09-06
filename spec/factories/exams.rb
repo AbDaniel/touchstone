@@ -2,16 +2,18 @@
 #
 # Table name: exams
 #
-#  id         :integer          not null, primary key
-#  code       :string
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  code        :string
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :string
 #
 
 FactoryGirl.define do
   factory :exam do
-    code "CS-101"
-    name "Introduction to CS"
+    code 'CS-101'
+    name 'Introduction to CS'
+    description 'Test your CS Skills'
   end
 end
