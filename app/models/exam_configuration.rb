@@ -14,5 +14,5 @@ class ExamConfiguration < ActiveRecord::Base
   belongs_to :exam
   has_many :sections
 
-  validates_presence_of :duration
+  validates_presence_of :duration, :starts_at
 end

@@ -14,6 +14,7 @@ FactoryGirl.define do
   factory :exam_configuration do
     exam { create(:exam) }
     duration '1 hour'
+    starts_at Time.now - 10.seconds
   end
 
 end
