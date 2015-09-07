@@ -14,8 +14,5 @@
 class Exam < ActiveRecord::Base
   has_one :exam_configuration
 
-  validates_presence_of :code
-  validates_presence_of :name
-  validates_presence_of :description
-  validates_presence_of :detail
+  validates_presence_of :code, :name, :description, :detail, :description
 end
