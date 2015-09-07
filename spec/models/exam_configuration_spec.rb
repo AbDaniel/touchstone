@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  duration   :string
+#  starts_at  :datetime
 #
 
 require 'rails_helper'
@@ -22,6 +23,7 @@ describe ExamConfiguration do
       exam = FactoryGirl.build(:exam_configuration, duration: nil)
       expect(exam).to_not be_valid
     end
+    it { should validate_presence_of :starts_at }
   end
 
 end

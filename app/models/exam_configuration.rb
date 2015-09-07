@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  duration   :string
+#  starts_at  :datetime
 #
 
 class ExamConfiguration < ActiveRecord::Base
