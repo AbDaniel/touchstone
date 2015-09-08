@@ -19,6 +19,21 @@ describe ExamsController do
     end
   end
 
+  describe 'GET #start' do
+    it 'redirects to exam#question'
+    context 'exam is not yet started' do
+      it 'populates session with questions based on exam configuration'
+    end
+    context 'exam is already started' do
+      it 'does not populate session'
+    end
+  end
+
+  describe 'GET #question' do
+    it 'populates the question from session based on question number'
+    it 'populates the question from session based on question number'
+  end
+
   describe 'GET #show' do
     let(:exam) { FactoryGirl.create(:exam) }
 
