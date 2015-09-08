@@ -15,14 +15,6 @@ FactoryGirl.define do
 
     categories { [create(:category)] }
 
-    transient do
-      choice_count 3
-    end
-
-    after(:create) do |question, evaluator|
-      create_list(:choice, evaluator.choice_count, question: question)
-      create(:choice, correct: true, question: question)
-    end
-
+    choices { build_list(:choice, 4) }
   end
 end

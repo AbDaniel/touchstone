@@ -34,6 +34,12 @@ describe Question, type: :model do
       question = FactoryGirl.create(:question)
       expect(question.choices.count).to eq(4)
     end
+
+    it 'it is not valid when choices are more than four' do
+      choices = FactoryGirl.build_list(:choice, 5)
+      question = FactoryGirl.build(:question, choices: choices)
+      expect(question).to_not be_valid
+    end
   end
 
 end
