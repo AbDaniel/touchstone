@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ExamsController, type: :controller do
+describe ExamsController do
   login_user
 
   it 'should have a current_user' do
@@ -16,6 +16,19 @@ RSpec.describe ExamsController, type: :controller do
     it 'renders the :index view' do
       get :index
       expect(response).to render_template :index
+    end
+  end
+
+  describe 'GET #show' do
+    let(:exam) { FactoryGirl.create(:exam) }
+
+    it 'assign the requested exam to @exam' do
+      get :show, id: exam
+      expect(assigns(:exam)).to eq exam
+    end
+    it 'renders the :show view' do
+      get :show, id: exam
+      expect(response).to render_template :show
     end
   end
 
