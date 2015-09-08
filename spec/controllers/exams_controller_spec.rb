@@ -13,6 +13,10 @@ RSpec.describe ExamsController, type: :controller do
       get :index
       expect(assigns(:exams)).to eq([exam])
     end
+    it 'renders the :index view' do
+      get :index
+      expect(response).to render_template :index
+    end
   end
 
 end
