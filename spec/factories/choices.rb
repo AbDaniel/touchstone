@@ -11,8 +11,11 @@
 #
 
 FactoryGirl.define do
+  sequence :text do |n|
+    "Some choice #{n}"
+  end
   factory :choice do
     correct false
-    text "Some Choice"
+    text
   end
 end
