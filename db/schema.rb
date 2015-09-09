@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150908164646) do
     t.integer  "exam_id"
     t.integer  "user_id"
     t.integer  "question_id"
-    t.string   "answer"
+    t.string   "text"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
