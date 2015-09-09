@@ -41,22 +41,31 @@ describe Exam do
   describe '#questions' do
     before(:each) do
       probability_category = FactoryGirl.create(:category, name: 'Probability')
-      @actual_questions = []
-      @actual_questions << FactoryGirl.create(:question, categories: [probability_category],
-                                              description: 'Probability Question',
-                                              choices: [create(:choice, text: 'Choice 1'),
-                                                        create(:choice, text: 'Choice 2'),
-                                                        create(:choice, text: 'Choice 3', correct: true),
-                                                        create(:choice, text: 'Choice 4')])
+      @expected_questions = []
+      @expected_questions << FactoryGirl.create(:question, categories: [probability_category],
+                                                description: 'Probability Question',
+                                                choices: [create(:choice, text: 'Choice 1'),
+                                                          create(:choice, text: 'Choice 2'),
+                                                          create(:choice, text: 'Choice 3', correct: true),
+                                                          create(:choice, text: 'Choice 4')]).id
 
       algebra_category = FactoryGirl.create(:category, name: 'Algebra')
-      @actual_questions << FactoryGirl.create(:question,
-                                              categories: [algebra_category],
-                                              description: 'Algebra Question',
-                                              choices: [create(:choice, text: 'Choice 1'),
-                                                        create(:choice, text: 'Choice 2'),
-                                                        create(:choice, text: 'Choice 3', correct: true),
-                                                        create(:choice, text: 'Choice 4')])
+      @expected_questions << FactoryGirl.create(:question,
+                                                categories: [algebra_category],
+                                                description: 'Algebra Question',
+                                                choices: [create(:choice, text: 'Choice 1'),
+                                                          create(:choice, text: 'Choice 2'),
+                                                          create(:choice, text: 'Choice 3', correct: true),
+                                                          create(:choice, text: 'Choice 4')]).id
+
+      permutation_category = FactoryGirl.create(:category, name: 'Permutation')
+      FactoryGirl.create(:question,
+                         categories: [permutation_category],
+                         description: 'Permutation Question',
+                         choices: [create(:choice, text: 'Choice 1'),
+                                   create(:choice, text: 'Choice 2'),
+                                   create(:choice, text: 'Choice 3', correct: true),
+                                   create(:choice, text: 'Choice 4')])
 
       exam_configuration = FactoryGirl.build(:exam_configuration,
                                              sections: [create(:section, category: probability_category, no_of_questions: 1),
@@ -67,6 +76,11 @@ describe Exam do
     end
     it 'does not return an empty list' do
       expect(@exam.questions).to_not be_empty
+    end
+    it 'returns a list of question based on categories in exam configuration' do
+      expected = Question.includes(:categories).where(id: @expected_questions)
+      actual = @exam.questions
+      expect(actual).to match_array(expected)
     end
   end
 
