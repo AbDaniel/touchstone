@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :exams, only: [:index, :show]
+
+  get '/exams/start/:id', to: 'exams#start'
 end

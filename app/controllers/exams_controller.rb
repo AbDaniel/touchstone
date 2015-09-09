@@ -1,11 +1,15 @@
 class ExamsController < ApplicationController
-  before_action :set_exam, only: [:show]
+  before_action :set_exam, only: [:show, :start]
 
   def index
     @exams = Exam.all
   end
 
   def show
+  end
+
+  def start
+    session[:exam_code] = @exam.code
   end
 
   private
