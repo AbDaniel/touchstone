@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 describe Group do
@@ -8,4 +18,6 @@ describe Group do
   it { should be_valid }
 
   it { should validate_presence_of :name }
+
+  it { should have_many(:users).through(:user_groups) }
 end

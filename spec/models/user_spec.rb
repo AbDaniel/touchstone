@@ -36,4 +36,6 @@ describe User do
     expect(user).to be_valid
   end
 
+  it { should have_many(:groups).through(:user_groups) }
+
 end
