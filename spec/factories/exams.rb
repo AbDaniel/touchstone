@@ -17,9 +17,12 @@ FactoryGirl.define do
     name 'Introduction to CS'
     description 'Test your CS Skills'
     detail 'A Long descriptive detail which I dont have time write'
+    exam_configuration nil
 
-    after(:create) do |exam|
-      create(:exam_configuration, exam: exam)
+    factory :exam_with_exam_configuration do
+      after(:create) do |exam|
+        create(:exam_configuration, exam: exam)
+      end
     end
   end
 end

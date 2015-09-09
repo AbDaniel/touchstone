@@ -15,6 +15,8 @@ FactoryGirl.define do
     exam { create(:exam) }
     duration '1 hour'
     starts_at Time.now - 10.seconds
+
+    sections []
   end
 
 end
