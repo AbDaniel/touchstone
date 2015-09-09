@@ -18,7 +18,7 @@ class Exam < ActiveRecord::Base
     questions_by_config = []
     sections = exam_configuration.sections;
     sections.each do |section|
-      questions_by_config << Question.includes(:categories).where(categories: {id: section.category.id})
+      questions_by_config << Question.includes(:categories).where(categories: {id: section.category.id}).order('RANDOM()').limit(section.no_of_questions)
     end
     questions_by_config.flatten!
   end

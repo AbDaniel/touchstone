@@ -40,9 +40,9 @@ describe Exam do
 
   describe '#questions' do
     before(:each) do
-      probability_category = FactoryGirl.create(:category, name: 'Probability')
+      @probability_category = FactoryGirl.create(:category, name: 'Probability')
       @expected_questions = []
-      @expected_questions << FactoryGirl.create(:question, categories: [probability_category],
+      @expected_questions << FactoryGirl.create(:question, categories: [@probability_category],
                                                 description: 'Probability Question',
                                                 choices: [create(:choice, text: 'Choice 1'),
                                                           create(:choice, text: 'Choice 2'),
@@ -68,16 +68,32 @@ describe Exam do
                                    create(:choice, text: 'Choice 4')])
 
       exam_configuration = FactoryGirl.build(:exam_configuration,
-                                             sections: [create(:section, category: probability_category, no_of_questions: 1),
+                                             sections: [create(:section, category: @probability_category, no_of_questions: 1),
                                                         create(:section, category: algebra_category, no_of_questions: 1)])
       @exam = FactoryGirl.create(:exam,
                                  name: 'CS:101',
                                  exam_configuration: exam_configuration)
     end
+
     it 'does not return an empty list' do
       expect(@exam.questions).to_not be_empty
     end
+
     it 'returns a list of question based on categories in exam configuration' do
+      expected = Question.includes(:categories).where(id: @expected_questions)
+      actual = @exam.questions
+      expect(actual).to match_array(expected)
+    end
+
+    it 'returns a list of question based on categories and no of questions in exam configuration' do
+      FactoryGirl.create(:question,
+                         categories: [@probability_category],
+                         description: 'Probability Question',
+                         choices: [create(:choice, text: 'Choice 1'),
+                                   create(:choice, text: 'Choice 2'),
+                                   create(:choice, text: 'Choice 3', correct: true),
+                                   create(:choice, text: 'Choice 4')])
+
       expected = Question.includes(:categories).where(id: @expected_questions)
       actual = @exam.questions
       expect(actual).to match_array(expected)
