@@ -14,5 +14,9 @@
 class Exam < ActiveRecord::Base
   has_one :exam_configuration
 
+  def questions
+    Question.all
+  end
+
   validates_presence_of :code, :name, :description, :detail, :description
 end
