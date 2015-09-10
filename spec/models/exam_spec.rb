@@ -36,6 +36,7 @@ describe Exam do
 
     it { should validate_presence_of :description }
     it { should validate_presence_of :detail }
+    it { should have_many(:groups).through(:exam_groups) }
   end
 
   describe '#questions' do

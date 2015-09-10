@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909160319) do
+ActiveRecord::Schema.define(version: 20150910041659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20150909160319) do
   end
 
   add_index "exam_configurations", ["exam_id"], name: "index_exam_configurations_on_exam_id", using: :btree
+
+  create_table "exam_groups", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "exam_groups", ["exam_id"], name: "index_exam_groups_on_exam_id", using: :btree
+  add_index "exam_groups", ["group_id"], name: "index_exam_groups_on_group_id", using: :btree
 
   create_table "exams", force: :cascade do |t|
     t.string   "code"
@@ -130,6 +140,8 @@ ActiveRecord::Schema.define(version: 20150909160319) do
   add_foreign_key "answers", "users"
   add_foreign_key "choices", "questions"
   add_foreign_key "exam_configurations", "exams"
+  add_foreign_key "exam_groups", "exams"
+  add_foreign_key "exam_groups", "groups"
   add_foreign_key "sections", "categories"
   add_foreign_key "sections", "exam_configurations"
   add_foreign_key "user_groups", "groups"

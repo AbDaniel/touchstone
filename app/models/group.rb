@@ -11,6 +11,8 @@
 class Group < ActiveRecord::Base
   has_many :user_groups
   has_many :users, :through => :user_groups
+  has_many :exam_groups
+  has_many :exams, :through => :exam_groups
 
   validates_presence_of :name
 end

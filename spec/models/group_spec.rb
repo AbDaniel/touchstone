@@ -20,4 +20,6 @@ describe Group do
   it { should validate_presence_of :name }
 
   it { should have_many(:users).through(:user_groups) }
+
+  it { should have_many(:exams).through(:exam_groups) }
 end

@@ -13,6 +13,8 @@
 
 class Exam < ActiveRecord::Base
   has_one :exam_configuration
+  has_many :exam_groups
+  has_many :groups, :through => :exam_groups
 
   def questions
     questions_by_config = []
