@@ -30,6 +30,14 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  def exams
+    exams_by_user_groups = []
+    groups.map do |group|
+      exams_by_user_groups << group.exams
+    end
+    exams_by_user_groups.flatten!
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
