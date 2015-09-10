@@ -9,6 +9,18 @@ feature 'User starts a exam', :devise do
                        description: 'Test you Programming Skills', detail: 'A long prog descriptive detail which I dont have time write')
     FactoryGirl.create(:exam, code: 'CS-102', name: 'Introduction to Ruby',
                        description: 'Test you Ruby Skills', detail: 'A long ruby descriptive detail which I dont have time write')
+    FactoryGirl.create(:group,
+                       name: 'CSE-A',
+                       exams: [create(:exam, code: 'CS-101',
+                                      name: 'Introduction to Programming',
+                                      description: 'Test you Programming Skills',
+                                      detail: 'A long prog descriptive detail which I dont have time write'),
+                               create(:exam, code: 'CS-102',
+                                      name: 'Introduction to Ruby',
+                                      description: 'Test you Ruby Skills',
+                                      detail: 'A long ruby descriptive detail which I dont have time write')],
+                       users: [@user])
+
   end
 
   after(:each) do

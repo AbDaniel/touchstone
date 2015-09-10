@@ -2,7 +2,7 @@ class ExamsController < ApplicationController
   before_action :set_exam, only: [:show, :start]
 
   def index
-    @exams = Exam.all
+    @exams = current_user.exams
   end
 
   def show

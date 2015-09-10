@@ -8,10 +8,17 @@ describe ExamsController do
   end
 
   describe 'GET #index' do
+    before(:each) do
+      FactoryGirl.create(:exam, code: 'CS-103')
+      @group = FactoryGirl.create(:group, name: 'CSE-A', exams: [create(:exam, code: 'CS-101'),
+                                                                 create(:exam, code: 'CS-102')], users: [subject.current_user])
+    end
+
     it 'populates an array of exams' do
-      exam = FactoryGirl.create(:exam)
+      expect(subject.current_user).to_not be_nil
+      expected = Exam.where(code: %w(CS-101 CS-102))
       get :index
-      expect(assigns(:exams)).to eq([exam])
+      expect(assigns(:exams)).to match_array(expected)
     end
 
     it 'should popluate array of exams only tagged to his user group' do
