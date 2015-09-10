@@ -1,4 +1,4 @@
-# == Schema Information
+ # == Schema Information
 #
 # Table name: users
 #
@@ -37,5 +37,23 @@ describe User do
   end
 
   it { should have_many(:groups).through(:user_groups) }
+
+  describe '#exams' do
+    before(:each) do
+      FactoryGirl.create(:exam, code: 'CS-103')
+      @group = FactoryGirl.build(:group, name: 'CSE-A', exams: [create(:exam, code: 'CS-101'),
+                                                                create(:exam, code: 'CS-102')])
+      @user = FactoryGirl.create(:user,
+                                 email: 'email@exmaple.com',
+                                 groups: [@group])
+    end
+
+    subject { @user }
+
+    it 'returns a list of exams tagged to it' do
+      expected = Exam.where(code: %w(CS-101 CS-102))
+      expect(@user.exams).to match_array(expected)
+    end
+  end
 
 end

@@ -10,7 +10,9 @@
 
 FactoryGirl.define do
   factory :group do
-    name "MyString"
+    name 'MyString'
+    users { [create(:user)] }
+    exams { [create(:exam)] }
   end
 
 end

@@ -13,6 +13,10 @@ describe ExamsController do
       get :index
       expect(assigns(:exams)).to eq([exam])
     end
+
+    it 'should popluate array of exams only tagged to his user group' do
+    end
+
     it 'renders the :index view' do
       get :index
       expect(response).to render_template :index
