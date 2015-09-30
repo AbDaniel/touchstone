@@ -12,7 +12,6 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
 gem 'materialize-sass'
@@ -46,5 +45,4 @@ group :test do
 end
 gem 'hirb'
 gem 'browserify-rails'
-gem 'react-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
