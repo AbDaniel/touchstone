@@ -44,5 +44,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 gem 'hirb'
-gem 'browserify-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'

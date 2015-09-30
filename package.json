@@ -1,8 +1,6 @@
 {
   "name": "learn-faust-seed",
   "dependencies": {
-    "browserify": "~> 10.2.4",
-    "browserify-incremental": "^3.0.1",
     "babelify": "^6.2.0",
     "material-ui": "^0.10.4"
   },
